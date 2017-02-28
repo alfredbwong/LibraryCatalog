@@ -8,7 +8,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Button;
-import javax.swing.JPanel;
 
 public class LibraryGui {
 
@@ -108,6 +107,9 @@ public class LibraryGui {
 					messageBox.setText("Info");
 					messageBox.setMessage("Valid");
 					messageBox.open();
+					shell.close();
+					MainGui mainGui = new MainGui();
+					mainGui.open();
 				}
             }
         });
