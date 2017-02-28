@@ -10,7 +10,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.widgets.Button;
 
-public class LibraryGui {
+public class LoginGui {
 
 	protected Shell shell;
 	private Text usernameText;
@@ -29,7 +29,7 @@ public class LibraryGui {
 	 */
 	public static void main(String[] args) {
 		try {
-			LibraryGui window = new LibraryGui();
+			LoginGui window = new LoginGui();
 			window.open();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +77,7 @@ public class LibraryGui {
 		passwordText.setBounds(187, 317, 200, 21);
 		
 		lblLibraryLogo = new Label(shell, SWT.NONE);
-		lblLibraryLogo.setImage(SWTResourceManager.getImage(LibraryGui.class, "/imgs/librarylogo.jpeg"));
+		lblLibraryLogo.setImage(SWTResourceManager.getImage(LoginGui.class, "/imgs/librarylogo.jpeg"));
 		lblLibraryLogo.setBounds(126, 42, 277, 194);
 		
 		Button btnLogin = new Button(shell, SWT.NONE);

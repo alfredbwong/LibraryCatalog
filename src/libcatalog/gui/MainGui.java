@@ -105,7 +105,7 @@ public class MainGui {
 		btnReturnToLogin.addListener(SWT.Selection, new Listener(){
             public void handleEvent(Event event) {
             	shell.close();
-            	LibraryGui libGui = new LibraryGui();
+            	LoginGui libGui = new LoginGui();
             	libGui.open();
             }
 		});
