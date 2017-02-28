@@ -7,6 +7,12 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.FillLayout;
+import swing2swt.layout.FlowLayout;
+import org.eclipse.swt.custom.StackLayout;
+import swing2swt.layout.BoxLayout;
+import swing2swt.layout.BorderLayout;
+import org.eclipse.swt.layout.RowLayout;
 
 public class MainGui {
 
@@ -50,24 +56,19 @@ public class MainGui {
 		shell.setLayout(new GridLayout(1, false));
 		
 		Button btnCheckOutBook = new Button(shell, SWT.NONE);
-		GridData gd_btnCheckOutBook = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_btnCheckOutBook.widthHint = 123;
-		btnCheckOutBook.setLayoutData(gd_btnCheckOutBook);
+		btnCheckOutBook.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 		btnCheckOutBook.setText("Check Out Book");
 		
 		Button btnAddNewCustomer = new Button(shell, SWT.NONE);
-		GridData gd_btnAddNewCustomer = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_btnAddNewCustomer.widthHint = 126;
-		btnAddNewCustomer.setLayoutData(gd_btnAddNewCustomer);
+		btnAddNewCustomer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 		btnAddNewCustomer.setText("Add New Customer");
 		
 		Button btnAddNewBook = new Button(shell, SWT.NONE);
-		GridData gd_btnAddNewBook = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_btnAddNewBook.widthHint = 125;
-		btnAddNewBook.setLayoutData(gd_btnAddNewBook);
+		btnAddNewBook.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 		btnAddNewBook.setText("Add New Book");
 		
 		Button btnReturnToLogin = new Button(shell, SWT.NONE);
+		btnReturnToLogin.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
 		btnReturnToLogin.setText("Return to Login Page");
 		
 		btnReturnToLogin.addListener(SWT.Selection, new Listener(){
