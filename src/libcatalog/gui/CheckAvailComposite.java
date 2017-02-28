@@ -27,6 +27,7 @@ public class CheckAvailComposite extends Composite {
 	private Label lblBookTitle;
 	private Label lblSearchResult;
 	private Button btnFindBook;
+	private Label lblReferToBookXML;
 
 	/**
 	 * Create the composite.
@@ -36,7 +37,7 @@ public class CheckAvailComposite extends Composite {
 	public CheckAvailComposite(Composite parent, int style) {
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		this.setVisible(true);
+		this.setVisible(false);
 		setupComposite();
 
 	}
@@ -99,6 +100,12 @@ public class CheckAvailComposite extends Composite {
 		btnFindBook.setBounds(101, 93, 75, 25);
 		btnFindBook.setText("Find Book!");
 		btnFindBook.setVisible(false);
+		
+		lblReferToBookXML = new Label(this, SWT.NONE);
+		lblReferToBookXML.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblReferToBookXML.setBounds(23, 31, 231, 15);
+		lblReferToBookXML.setText("Refer to xmlresources/books.xml for books");
+		lblReferToBookXML.setVisible(false);
 	}
 
 	private static LinkedList<Book> readInDateFromBooksXML() {
@@ -136,5 +143,6 @@ public class CheckAvailComposite extends Composite {
 		txtBookTitle.setVisible(true);
 		lblSearchResult.setVisible(true);
 		btnFindBook.setVisible(true);
+		lblReferToBookXML.setVisible(true);
 	}
 }
