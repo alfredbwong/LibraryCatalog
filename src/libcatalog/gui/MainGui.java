@@ -18,16 +18,18 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
-import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.widgets.Text;
 
 public class MainGui {
 
 	protected Shell shell;
+	private Text txtBookTitle;
 
 	/**
 	 * Launch the application.
@@ -64,10 +66,64 @@ public class MainGui {
 		shell = new Shell();
 		shell.setSize(450, 300);
 		shell.setText("Main Gui");
-		shell.setLayout(new GridLayout(2, false));
+		shell.setLayout(null);
 		
+		Composite composite = new Composite(shell, SWT.NONE);
+		composite.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		composite.setBounds(148, 5, 276, 251);
+		composite.setVisible(true);
+		
+		//Check Book Availability Widgets
+		Label lblCheckBookAvailability = new Label(composite, SWT.NONE);
+		lblCheckBookAvailability.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblCheckBookAvailability.setBounds(82, 10, 134, 15);
+		lblCheckBookAvailability.setText("Check Book Availability");
+		lblCheckBookAvailability.setVisible(false);
+		
+		Label lblBookTitle = new Label(composite, SWT.NONE);
+		lblBookTitle.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblBookTitle.setBounds(10, 57, 74, 15);
+		lblBookTitle.setText("Book Title :");
+		lblBookTitle.setVisible(false);
+		
+		txtBookTitle = new Text(composite, SWT.BORDER);
+		txtBookTitle.setBounds(90, 54, 176, 21);
+		txtBookTitle.setVisible(false);
+		
+		Label lblSearchResult = new Label(composite, SWT.NONE);
+		lblSearchResult.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblSearchResult.setAlignment(SWT.CENTER);
+		lblSearchResult.setBounds(10, 132, 256, 37);
+		lblSearchResult.setVisible(false);
+		
+		Button btnFindBook = new Button(composite, SWT.NONE);
+		btnFindBook.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				boolean hasFoundBook = false;
+				LinkedList<Book> bookCollection = readInDateFromBooksXML();
+				for (Book b : bookCollection){
+					if (b.getTitle().equals(txtBookTitle.getText())){
+						hasFoundBook = true;
+						if (b.checkAvailability()){
+							lblSearchResult.setText("Found a book with title: " + txtBookTitle.getText() + " and is available.");
+						} else {
+							lblSearchResult.setText("Found a book with title: " + txtBookTitle.getText() + " and is unavailable.");
+						}
+					}
+				}
+				if (!hasFoundBook){
+					lblSearchResult.setText("Did not find a book with title: " + txtBookTitle.getText());
+				}
+			}
+		});
+		btnFindBook.setBounds(101, 93, 75, 25);
+		btnFindBook.setText("Find Book!");
+		btnFindBook.setVisible(false);
+		
+		// Main buttons
 		Button btnCheckOutBook = new Button(shell, SWT.NONE);
-		btnCheckOutBook.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
+		btnCheckOutBook.setBounds(5, 5, 134, 46);
 		btnCheckOutBook.setText("Check Out Book");
 		btnCheckOutBook.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -76,31 +132,34 @@ public class MainGui {
 			}
 		});
 		
+		Button btnAddNewCustomer = new Button(shell, SWT.NONE);
+		btnAddNewCustomer.setBounds(5, 56, 134, 46);
+		btnAddNewCustomer.setText("Add New Customer");
+		
+		Button btnAddNewBook = new Button(shell, SWT.NONE);
+		btnAddNewBook.setBounds(5, 107, 134, 46);
+		btnAddNewBook.setText("Add New Book");
+		
+		Button btnReturnToLogin = new Button(shell, SWT.NONE);
+		btnReturnToLogin.setBounds(5, 158, 134, 46);
+		btnReturnToLogin.setText("Return to Login Page");
+		
 		Button btnCheckAvail = new Button(shell, SWT.NONE);
+		btnCheckAvail.setBounds(5, 209, 134, 47);
 		btnCheckAvail.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				CheckAvailGui checkAvailGui = new CheckAvailGui();
-				checkAvailGui.open();
+				lblCheckBookAvailability.setVisible(true);
+				lblBookTitle.setVisible(true);
+				txtBookTitle.setVisible(true);
+				lblSearchResult.setVisible(true);
+				btnFindBook.setVisible(true);
 			}
 		});
-		btnCheckAvail.setLayoutData(new GridData(SWT.LEFT, SWT.FILL, false, false, 1, 1));
-		btnCheckAvail.setText("Check book availability.");
+		btnCheckAvail.setText("Check book availability");
 		
-		Button btnAddNewCustomer = new Button(shell, SWT.NONE);
-		btnAddNewCustomer.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
-		btnAddNewCustomer.setText("Add New Customer");
-		new Label(shell, SWT.NONE);
 		
-		Button btnAddNewBook = new Button(shell, SWT.NONE);
-		btnAddNewBook.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
-		btnAddNewBook.setText("Add New Book");
-		new Label(shell, SWT.NONE);
 		
-		Button btnReturnToLogin = new Button(shell, SWT.NONE);
-		btnReturnToLogin.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, true, 1, 1));
-		btnReturnToLogin.setText("Return to Login Page");
-		new Label(shell, SWT.NONE);
 		
 		btnReturnToLogin.addListener(SWT.Selection, new Listener(){
             public void handleEvent(Event event) {
@@ -111,5 +170,32 @@ public class MainGui {
 		});
 
 	}
+	private static LinkedList<Book> readInDateFromBooksXML() {
+		LinkedList<Book> tmpBookList = new LinkedList<Book>();
 
+		try{
+			File inputFile = new File("src\\xmlresources\\books.xml");
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = factory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getElementsByTagName("book");
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				Element eElement = (Element) nNode;
+				int isbn = Integer.parseInt(eElement.getAttribute("isbn"));
+				int pages = Integer.parseInt(eElement.getElementsByTagName("pages").item(0).getTextContent());
+				String title = eElement.getElementsByTagName("title").item(0).getTextContent();
+				String availStr = eElement.getElementsByTagName("availability").item(0).getTextContent();
+				boolean availability = availStr.equals("true") ? true : false;
+				Book b = new Book (title, pages, isbn, availability);
+				tmpBookList.add(b);
+			}
+		}catch (Exception e){
+			System.out.println("Failed to Parse XML");
+			System.out.println(e);
+		}
+		return tmpBookList;
+	}
 }

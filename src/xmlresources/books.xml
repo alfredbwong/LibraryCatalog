@@ -3,7 +3,7 @@
    <book isbn="0000001">
       <title>book1</title>
       <pages>109238</pages>
-      <availability>true</availability>
+      <availability>false</availability>
    </book>
    <book isbn="0000002">
       <title>book2</title>
