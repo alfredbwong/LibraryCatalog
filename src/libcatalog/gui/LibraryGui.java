@@ -1,3 +1,4 @@
+package libcatalog.gui;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;

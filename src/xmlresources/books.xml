@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<class>
+   <book isbn="0000001">
+      <title>book1</title>
+      <pages>109238</pages>
+      <availability>true</availability>
+   </book>
+   <book isbn="0000002">
+      <title>book2</title>
+      <pages>89234</pages>
+      <availability>true</availability>
+   </book>
+   <book isbn="0000003">
+      <title>book3</title>
+      <pages>29834</pages>
+      <availability>true</availability>
+   </book>
+   <book isbn="0000004">
+      <title>book4</title>
+      <pages>125235</pages>
+      <availability>true</availability>
+   </book>
+</class>

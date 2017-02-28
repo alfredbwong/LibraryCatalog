@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<class>
+   <customer id="001">
+      <name>Alfred</name>
+      <pages>109238</pages>
+      <availability>true</availability>
+   </customer>
+   <customer id="002">
+      <name>Abby</name>
+      <pages>89234</pages>
+      <availability>true</availability>
+   </customer>
+</class>
