@@ -12,6 +12,9 @@ import org.eclipse.swt.events.SelectionEvent;
 public class MainGui {
 
 	protected Shell shell;
+	protected CheckAvailComposite checkAvailComp;
+	protected AddBookComposite addBookComp;
+	protected AddCustomerComposite addCustComp;
 
 	/**
 	 * Launch the application.
@@ -50,7 +53,6 @@ public class MainGui {
 		shell.setText("Main Gui");
 		shell.setLayout(null);
 		
-		CheckAvailComposite checkAvailComp = new CheckAvailComposite(shell, SWT.NONE);
 				
 		// Main buttons
 		Button btnCheckOutBook = new Button(shell, SWT.NONE);
@@ -59,27 +61,60 @@ public class MainGui {
 		btnCheckOutBook.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Check out book");
+				//TODO Add check out functionality
 			}
 		});
 		
 		Button btnAddNewCustomer = new Button(shell, SWT.NONE);
+		btnAddNewCustomer.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (addBookComp != null){
+					addBookComp.dispose();
+				}
+				if (checkAvailComp != null){
+					checkAvailComp.dispose();
+				}
+				addCustComp = new AddCustomerComposite(shell, SWT.NONE);
+				addCustComp.reveal();
+			}
+		});
 		btnAddNewCustomer.setBounds(5, 56, 134, 46);
 		btnAddNewCustomer.setText("Add New Customer");
 		
 		Button btnAddNewBook = new Button(shell, SWT.NONE);
+		btnAddNewBook.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (checkAvailComp != null){
+					checkAvailComp.dispose();
+				}
+				if (addCustComp != null){
+					addCustComp.dispose();
+				}
+				addBookComp = new AddBookComposite(shell, SWT.NONE);
+				addBookComp.reveal();
+			}
+		});
 		btnAddNewBook.setBounds(5, 107, 134, 46);
 		btnAddNewBook.setText("Add New Book");
 		
 		Button btnReturnToLogin = new Button(shell, SWT.NONE);
-		btnReturnToLogin.setBounds(5, 158, 134, 46);
+		btnReturnToLogin.setBounds(5, 212, 134, 46);
 		btnReturnToLogin.setText("Return to Login Page");
 		
 		Button btnCheckAvail = new Button(shell, SWT.NONE);
-		btnCheckAvail.setBounds(5, 209, 134, 47);
+		btnCheckAvail.setBounds(5, 159, 134, 47);
 		btnCheckAvail.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				if (addBookComp != null){
+					addBookComp.dispose();
+				}
+				if (addCustComp != null){
+					addCustComp.dispose();
+				}
+				checkAvailComp = new CheckAvailComposite(shell, SWT.NONE);
 				checkAvailComp.reveal();
 			}
 		});

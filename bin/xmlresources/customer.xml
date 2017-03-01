@@ -2,12 +2,10 @@
 <class>
    <customer id="001">
       <name>Alfred</name>
-      <pages>109238</pages>
-      <availability>true</availability>
+      <address>1MapleStreet</address>
    </customer>
    <customer id="002">
       <name>Abby</name>
-      <pages>89234</pages>
-      <availability>true</availability>
+      <address>3GoldStreet</address>
    </customer>
 </class>

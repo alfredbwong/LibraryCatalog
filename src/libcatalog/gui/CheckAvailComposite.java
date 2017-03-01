@@ -21,7 +21,7 @@ import org.w3c.dom.NodeList;
 
 import libcatalog.entities.Book;
 
-public class CheckAvailComposite extends Composite {
+public class CheckAvailComposite extends Composite implements MainCompInterface {
 	private Text txtBookTitle;
 	private Label lblCheckBookAvailability;
 	private Label lblBookTitle;
@@ -37,22 +37,17 @@ public class CheckAvailComposite extends Composite {
 	public CheckAvailComposite(Composite parent, int style) {
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		this.setVisible(false);
-		setupComposite();
+		this.setBounds(148, 5, 276, 251);
+		this.setVisible(true);
+		setupWidgets();
 
 	}
 	@Override
 	protected void checkSubclass() {
 		// Disable the check that prevents subclassing of SWT components
 	}
-	private void setupComposite() {
-		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		this.setBounds(148, 5, 276, 251);
-		this.setVisible(true);
-		setupWidgets();
-	}
 
-	private void setupWidgets() {
+	public void setupWidgets() {
 		//Check Book Availability Widgets
 		lblCheckBookAvailability = new Label(this, SWT.NONE);
 		lblCheckBookAvailability.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
