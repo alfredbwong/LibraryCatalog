@@ -103,7 +103,7 @@ public class CheckAvailComposite extends Composite implements MainCompInterface 
 		lblReferToBookXML.setVisible(false);
 	}
 
-	private static LinkedList<Book> readInDateFromBooksXML() {
+	private LinkedList <Book> readInDateFromBooksXML() {
 		LinkedList<Book> tmpBookList = new LinkedList<Book>();
 
 		try{
@@ -140,4 +140,5 @@ public class CheckAvailComposite extends Composite implements MainCompInterface 
 		btnFindBook.setVisible(true);
 		lblReferToBookXML.setVisible(true);
 	}
+
 }

@@ -3,17 +3,21 @@ package libcatalog.entities;
 public class Book {
 	protected String title;
 	protected int pageCount;
-	protected int refId;
+	protected int isbn;
 	protected boolean isAvailable;
+	private static int numOfBooks = 0;
 	
 	//Constructor for Book
-	public Book (String title, int pageCount, int refId, boolean isAvailable){
+	public Book (String title, int pageCount, int isbn, boolean isAvailable){
 		this.title = title;
 		this.pageCount = pageCount;
-		this.refId = refId;
+		this.isbn = isbn;
 		this.isAvailable = isAvailable;
+		numOfBooks++;
 	}
-	
+	public static int getNumBooks(){
+		return numOfBooks;
+	}
 	//Returns title of book
 	public String getTitle() {
 		return title;
@@ -35,13 +39,13 @@ public class Book {
 	}
 	
 	//Returns book ID
-	public int getRefId() {
-		return refId;
+	public int getIsbn() {
+		return isbn;
 	}
 	
 	//Sets the book ID
-	public void setRefId(int refId) {
-		this.refId = refId;
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
 	}
 	
 	//Returns the availability of the book

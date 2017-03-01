@@ -1,23 +1,33 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <class>
-   <book isbn="0000001">
+   <book isbn="1">
       <title>book1</title>
       <pages>109238</pages>
       <availability>false</availability>
    </book>
-   <book isbn="0000002">
+   <book isbn="2">
       <title>book2</title>
       <pages>89234</pages>
       <availability>true</availability>
    </book>
-   <book isbn="0000003">
+   <book isbn="3">
       <title>book3</title>
       <pages>29834</pages>
       <availability>true</availability>
    </book>
-   <book isbn="0000004">
-      <title>book4</title>
+   <book isbn="4">
+   		<title>book4</title>
       <pages>125235</pages>
       <availability>true</availability>
    </book>
+<book isbn="5">
+        <title>Book Title</title>
+        <pages>123</pages>
+        <availability>false</availability>
+    </book>
+<book isbn="6">
+        <title>Book Title</title>
+        <pages>236</pages>
+        <availability>true</availability>
+    </book>
 </class>

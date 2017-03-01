@@ -48,9 +48,6 @@ public class LoginGui {
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
-			if (isValidLogin){
-			
-			}
 		}
 	}
 
