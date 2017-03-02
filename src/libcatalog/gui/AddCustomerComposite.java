@@ -44,7 +44,6 @@ public class AddCustomerComposite extends Composite implements MainCompInterface
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
-		
 		setupWidgets();
 	}
 
@@ -100,16 +99,6 @@ public class AddCustomerComposite extends Composite implements MainCompInterface
 		btnAddNewCustomer.setText("Add New Customer!");		
 	}
 
-	@Override
-	public void reveal() {
-		lblAddNewCustomer.setVisible(true);
-		lblCustomerName.setVisible(true);
-		textCustomerName.setVisible(true);
-		lblAddressLabel.setVisible(true);
-		textAddress.setVisible(true);
-		btnAddNewCustomer.setVisible(true);
-
-	}
 	private void addBookToXML(){
 		// instance of a DocumentBuilderFactory
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

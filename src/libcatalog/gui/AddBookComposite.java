@@ -103,17 +103,6 @@ public class AddBookComposite extends Composite implements MainCompInterface {
 		textPageCount.setBounds(111, 89, 128, 21);
 	}
 
-	@Override
-	public void reveal() {
-		lblBookTitle.setVisible(true);
-		lblAvailability.setVisible(true);
-		txtBookTitle.setVisible(true);
-		lblAddANew.setVisible(true);
-		btnAddBook.setVisible(true);
-		buttonAvail.setVisible(true);
-		lblPageCount.setVisible(true);
-		textPageCount.setVisible(true);
-	}
 	private void addBookToXML(){
 		// instance of a DocumentBuilderFactory
 		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();

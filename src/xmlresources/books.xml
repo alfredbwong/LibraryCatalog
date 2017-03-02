@@ -12,15 +12,15 @@
 		<availability>true</availability>
 		<bororwerID>1</bororwerID>
 	</book>
-	<book isbn="3">
-		<title>Book Title</title>
-		<pages>123</pages>
-		<availability>true</availability>
-		<borrowerID/>
-	</book>
+<book isbn="3">
+        <title>testBook</title>
+        <pages>1212</pages>
+        <availability>true</availability>
+        <borrowerID/>
+    </book>
 <book isbn="4">
-        <title>Book Title</title>
-        <pages>123s</pages>
+        <title>BigGiant</title>
+        <pages>123</pages>
         <availability>true</availability>
         <borrowerID/>
     </book>

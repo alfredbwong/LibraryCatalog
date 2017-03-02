@@ -2,7 +2,20 @@ package libcatalog.gui;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Shell;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import libcatalog.entities.Book;
+
 import org.eclipse.swt.widgets.Listener;
+
+import java.io.File;
+import java.util.LinkedList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
@@ -16,6 +29,7 @@ public class MainGui {
 	protected AddBookComposite addBookComp;
 	protected AddCustomerComposite addCustComp;
 	protected CheckOutComposite checkOutComp;
+	protected LinkedList <Book> bookList;
 
 	/**
 	 * Launch the application.
@@ -39,6 +53,8 @@ public class MainGui {
 		shell.open();
 		shell.layout();
 		while (!shell.isDisposed()) {
+			bookList = readBooksXML();
+
 			if (!display.readAndDispatch()) {
 				display.sleep();
 			}
@@ -71,8 +87,7 @@ public class MainGui {
 				if (addCustComp != null){
 					addCustComp.dispose();
 				}
-				checkOutComp = new CheckOutComposite(shell, SWT.NONE);
-				checkOutComp.reveal();
+				checkOutComp = new CheckOutComposite(shell, SWT.NONE, bookList);
 			}
 		});
 		
@@ -90,7 +105,6 @@ public class MainGui {
 					checkOutComp.dispose();
 				}
 				addCustComp = new AddCustomerComposite(shell, SWT.NONE);
-				addCustComp.reveal();
 			}
 		});
 		btnAddNewCustomer.setBounds(5, 56, 134, 46);
@@ -110,7 +124,6 @@ public class MainGui {
 					checkOutComp.dispose();
 				}
 				addBookComp = new AddBookComposite(shell, SWT.NONE);
-				addBookComp.reveal();
 			}
 		});
 		btnAddNewBook.setBounds(5, 107, 134, 46);
@@ -134,8 +147,7 @@ public class MainGui {
 				if (checkOutComp != null){
 					checkOutComp.dispose();
 				}
-				checkAvailComp = new CheckAvailComposite(shell, SWT.NONE);
-				checkAvailComp.reveal();
+				checkAvailComp = new CheckAvailComposite(shell, SWT.NONE, bookList);
 			}
 		});
 		btnCheckAvail.setText("Check book availability");
@@ -152,4 +164,33 @@ public class MainGui {
 		});
 
 	}
+	private LinkedList <Book> readBooksXML() {
+		LinkedList<Book> tmpBookList = new LinkedList<Book>();
+
+		try{
+			File inputFile = new File("src\\xmlresources\\books.xml");
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder dBuilder = factory.newDocumentBuilder();
+			Document doc = dBuilder.parse(inputFile);
+
+			doc.getDocumentElement().normalize();
+			NodeList nList = doc.getElementsByTagName("book");
+			for (int temp = 0; temp < nList.getLength(); temp++) {
+				Node nNode = nList.item(temp);
+				Element eElement = (Element) nNode;
+				int isbn = Integer.parseInt(eElement.getAttribute("isbn"));
+				int pages = Integer.parseInt(eElement.getElementsByTagName("pages").item(0).getTextContent());
+				String title = eElement.getElementsByTagName("title").item(0).getTextContent();
+				String availStr = eElement.getElementsByTagName("availability").item(0).getTextContent();
+				boolean availability = availStr.equals("true") ? true : false;
+				Book b = new Book (title, pages, isbn, availability);
+				tmpBookList.add(b);
+			}
+		}catch (Exception e){
+			System.out.println("Failed to Parse XML");
+			System.out.println(e);
+		}
+		return tmpBookList;
+	}
+
 }

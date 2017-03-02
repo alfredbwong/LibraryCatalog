@@ -1,11 +1,18 @@
 package libcatalog.gui;
 
+import java.util.LinkedList;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
+
+import libcatalog.entities.Book;
+
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 
 public class CheckOutComposite extends Composite implements MainCompInterface {
 	private Text textCustomerInput;
@@ -14,15 +21,17 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 	private Label lblCustomerId;
 	private Label lblBookId;
 	private Button btnCheckOutBook;
+	private LinkedList<Book> listOfBooks;
 
 	/**
 	 * Create the composite.
 	 * @param parent
 	 * @param style
+	 * @param bookList 
 	 */
-	public CheckOutComposite(Composite parent, int style) {
+	public CheckOutComposite(Composite parent, int style, LinkedList<Book> listOfBooks) {
 		super(parent, style);
-		this.setVisible(true);
+		this.listOfBooks = listOfBooks;
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
 		setupWidgets();		
@@ -37,13 +46,11 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 	@Override
 	public void setupWidgets() {
 		lblCheckOutBook = new Label(this, SWT.NONE);
-		lblCheckOutBook.setVisible(false);
 		lblCheckOutBook.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblCheckOutBook.setBounds(69, 10, 102, 15);
 		lblCheckOutBook.setText("Check Out a Book");
 		
 		lblCustomerId = new Label(this, SWT.NONE);
-		lblCustomerId.setVisible(false);
 		lblCustomerId.setBounds(10, 34, 82, 15);
 		lblCustomerId.setText("Customer ID:");
 		
@@ -52,28 +59,21 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 		textCustomerInput.setBounds(107, 31, 117, 21);
 		
 		lblBookId = new Label(this, SWT.NONE);
-		lblBookId.setVisible(false);
 		lblBookId.setBounds(10, 69, 55, 15);
 		lblBookId.setText("Book ID:");
 		
 		textBookInput = new Text(this, SWT.BORDER);
-		textBookInput.setVisible(false);
 		textBookInput.setBounds(107, 63, 117, 21);
 		
 		btnCheckOutBook = new Button(this, SWT.NONE);
-		btnCheckOutBook.setVisible(false);
+		btnCheckOutBook.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				
+			}
+		});
 		btnCheckOutBook.setBounds(47, 103, 128, 25);
 		btnCheckOutBook.setText("Check Out Book");
-	}
-
-	@Override
-	public void reveal() {
-		lblCheckOutBook.setVisible(true);
-		lblCustomerId.setVisible(true);
-		textCustomerInput.setVisible(true);
-		lblBookId.setVisible(true);
-		textBookInput.setVisible(true);
-		btnCheckOutBook.setVisible(true);
 
 	}
 }
