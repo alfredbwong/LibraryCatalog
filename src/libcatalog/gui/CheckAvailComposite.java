@@ -80,7 +80,7 @@ public class CheckAvailComposite extends Composite implements MainCompInterface 
 				for (Book b : bookCollection){
 					if (b.getTitle().equals(txtBookTitle.getText())){
 						hasFoundBook = true;
-						if (b.checkAvailability()){
+						if (b.isAvailable()){
 							lblSearchResult.setText("Found a book with title: " + txtBookTitle.getText() + " and is available.");
 						} else {
 							lblSearchResult.setText("Found a book with title: " + txtBookTitle.getText() + " and is unavailable.");

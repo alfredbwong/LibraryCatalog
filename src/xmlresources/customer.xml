@@ -1,11 +1,15 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <class>
-   <customer id="001">
+   <customer id="1">
       <name>Alfred</name>
       <address>1MapleStreet</address>
    </customer>
-   <customer id="002">
+   <customer id="2">
       <name>Abby</name>
       <address>3GoldStreet</address>
    </customer>
+	<customer id="3">
+        <name>234</name>
+        <pages>234</pages>
+    </customer>
 </class>

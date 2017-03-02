@@ -20,9 +20,6 @@ public class LoginGui {
 	private String usernameInput;
 	private String passwordInput;
 	
-	private boolean isValidLogin = false;
-
-
 	/**
 	 * Launch the application.
 	 * @param args
@@ -100,7 +97,6 @@ public class LoginGui {
 						msgBox.open();
 					}
 				}else{
-					isValidLogin = true;
 					MessageBox messageBox = new MessageBox(shell, SWT.OK | SWT.ICON_WORKING);
 					messageBox.setText("Info");
 					messageBox.setMessage("Valid");

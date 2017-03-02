@@ -4,30 +4,12 @@
       <title>book1</title>
       <pages>109238</pages>
       <availability>false</availability>
+      <bororwerID></bororwerID>
    </book>
    <book isbn="2">
       <title>book2</title>
       <pages>89234</pages>
       <availability>true</availability>
+      <bororwerID>1</bororwerID>
    </book>
-   <book isbn="3">
-      <title>book3</title>
-      <pages>29834</pages>
-      <availability>true</availability>
-   </book>
-   <book isbn="4">
-   		<title>book4</title>
-      <pages>125235</pages>
-      <availability>true</availability>
-   </book>
-<book isbn="5">
-        <title>Book Title</title>
-        <pages>123</pages>
-        <availability>false</availability>
-    </book>
-<book isbn="6">
-        <title>Book Title</title>
-        <pages>236</pages>
-        <availability>true</availability>
-    </book>
 </class>

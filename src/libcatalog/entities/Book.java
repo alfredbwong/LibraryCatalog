@@ -49,7 +49,7 @@ public class Book {
 	}
 	
 	//Returns the availability of the book
-	public boolean checkAvailability(){
+	public boolean isAvailable(){
 		return isAvailable;
 	}
 	
