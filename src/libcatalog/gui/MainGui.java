@@ -15,6 +15,7 @@ public class MainGui {
 	protected CheckAvailComposite checkAvailComp;
 	protected AddBookComposite addBookComp;
 	protected AddCustomerComposite addCustComp;
+	protected CheckOutComposite checkOutComp;
 
 	/**
 	 * Launch the application.
@@ -61,7 +62,17 @@ public class MainGui {
 		btnCheckOutBook.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				//TODO Add check out functionality
+				if (addBookComp != null){
+					addBookComp.dispose();
+				}
+				if (checkAvailComp != null){
+					checkAvailComp.dispose();
+				}
+				if (addCustComp != null){
+					addCustComp.dispose();
+				}
+				checkOutComp = new CheckOutComposite(shell, SWT.NONE);
+				checkOutComp.reveal();
 			}
 		});
 		
@@ -74,6 +85,9 @@ public class MainGui {
 				}
 				if (checkAvailComp != null){
 					checkAvailComp.dispose();
+				}
+				if (checkOutComp != null){
+					checkOutComp.dispose();
 				}
 				addCustComp = new AddCustomerComposite(shell, SWT.NONE);
 				addCustComp.reveal();
@@ -91,6 +105,9 @@ public class MainGui {
 				}
 				if (addCustComp != null){
 					addCustComp.dispose();
+				}
+				if (checkOutComp != null){
+					checkOutComp.dispose();
 				}
 				addBookComp = new AddBookComposite(shell, SWT.NONE);
 				addBookComp.reveal();
@@ -113,6 +130,9 @@ public class MainGui {
 				}
 				if (addCustComp != null){
 					addCustComp.dispose();
+				}
+				if (checkOutComp != null){
+					checkOutComp.dispose();
 				}
 				checkAvailComp = new CheckAvailComposite(shell, SWT.NONE);
 				checkAvailComp.reveal();

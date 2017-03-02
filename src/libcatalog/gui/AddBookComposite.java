@@ -142,6 +142,9 @@ public class AddBookComposite extends Composite implements MainCompInterface {
 			bookAvailability.appendChild(document.createTextNode(String.valueOf(buttonAvail.getSelection())));
 			newBook.appendChild(bookAvailability);
 			
+			Element bookBorrower = document.createElement("borrowerID");
+			newBook.appendChild(bookBorrower);
+			
 			root.appendChild(newBook);
 			
 			DOMSource source = new DOMSource(document);

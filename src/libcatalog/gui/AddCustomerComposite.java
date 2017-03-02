@@ -130,7 +130,7 @@ public class AddCustomerComposite extends Composite implements MainCompInterface
 			customerName.appendChild(document.createTextNode(textCustomerName.getText()));
 			newCustomer.appendChild(customerName);
 			
-			Element customerAddr = document.createElement("pages");
+			Element customerAddr = document.createElement("address");
 			customerAddr.appendChild(document.createTextNode(textAddress.getText()));
 			newCustomer.appendChild(customerAddr);
 			

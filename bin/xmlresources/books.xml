@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <class>
-   <book isbn="1">
-      <title>book1</title>
-      <pages>109238</pages>
-      <availability>false</availability>
-      <bororwerID></bororwerID>
-   </book>
-   <book isbn="2">
-      <title>book2</title>
-      <pages>89234</pages>
-      <availability>true</availability>
-      <bororwerID>1</bororwerID>
-   </book>
+	<book isbn="1">
+		<title>book1</title>
+		<pages>109238</pages>
+		<availability>false</availability>
+		<bororwerID/>
+	</book>
+	<book isbn="2">
+		<title>book2</title>
+		<pages>89234</pages>
+		<availability>true</availability>
+		<bororwerID>1</bororwerID>
+	</book>
+	<book isbn="3">
+		<title>Book Title</title>
+		<pages>123</pages>
+		<availability>true</availability>
+		<borrowerID/>
+	</book>
+<book isbn="4">
+        <title>Book Title</title>
+        <pages>123s</pages>
+        <availability>true</availability>
+        <borrowerID/>
+    </book>
 </class>
