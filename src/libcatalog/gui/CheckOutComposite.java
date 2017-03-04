@@ -32,8 +32,7 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 	private Label lblCustomerId;
 	private Label lblBookId;
 	private Button btnCheckOutBook;
-	final int REF_NUM_OF_BORROWER = 8;
-	final String BOOK_XMLPATH = "src\\xmlresources\\books.xml";
+	private final String BOOK_XMLPATH = "src\\xmlresources\\books.xml";
 
 
 	/**
@@ -99,16 +98,20 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 			Node bookToCheckOut = document.getElementsByTagName("book").item(Integer.parseInt(textBookInput.getText())-1);
 
 			NodeList list = bookToCheckOut.getChildNodes();
-
+			boolean wasContentUpdated = false;
 			for (int i = 0; i < list.getLength(); i++) {
 				Node node = list.item(i);
-				// get the salary element, and update the value
-				if ("borrowerID".equals(node.getNodeName())) {
+//				System.out.println(i + " : " + node.getNodeName());
+				if ("availability".equals(node.getNodeName()) && node.getTextContent().equals("true")) {
+					node.setTextContent("false");
+					wasContentUpdated = true;
+				}
+				if ("borrowerID".equals(node.getNodeName()) && wasContentUpdated) {
 					node.setTextContent(textCustomerInput.getText());
 				}
-
 			}
-			// Write to XML file
+//			System.out.println("wasContentUpdated: " + wasContentUpdated);
+//			// Write to XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource source = new DOMSource(document);

@@ -1,12 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><book isbn="1">
-	<title>book1</title>
-	<pages>109238</pages>
-	<availability>false</availability>
-	<borrowerID>2</borrowerID>
-<book isbn="2">
-        <title>testBook</title>
-        <pages>111</pages>
-        <availability>true</availability>
-        <borrowerID>4</borrowerID>
-    </book>
-</book>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library>
+	<book isbn="1">
+		<title>book1</title>
+		<pages>109238</pages>
+		<availability>false</availability>
+		<borrowerID>3</borrowerID>
+	</book>
+	<book isbn="2">
+		<title>testBook</title>
+		<pages>111</pages>
+		<availability>false</availability>
+		<borrowerID>4</borrowerID>
+	</book>
+</library>
