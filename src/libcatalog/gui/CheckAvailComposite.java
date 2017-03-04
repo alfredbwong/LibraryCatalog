@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 import libcatalog.entities.Book;
 
-public class CheckAvailComposite extends Composite implements MainCompInterface {
+public class CheckAvailComposite extends Composite {
 	private Text txtBookTitle;
 	private Label lblCheckBookAvailability;
 	private Label lblBookTitle;
@@ -31,15 +31,6 @@ public class CheckAvailComposite extends Composite implements MainCompInterface 
 		this.listOfBooks = listOfBooks;
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
-		setupWidgets();
-
-	}
-	@Override
-	protected void checkSubclass() {
-		// Disable the check that prevents subclassing of SWT components
-	}
-
-	public void setupWidgets() {
 		//Check Book Availability Widgets
 		lblCheckBookAvailability = new Label(this, SWT.NONE);
 		lblCheckBookAvailability.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
@@ -81,11 +72,15 @@ public class CheckAvailComposite extends Composite implements MainCompInterface 
 		});
 		btnFindBook.setBounds(101, 93, 75, 25);
 		btnFindBook.setText("Find Book!");
-		
+
 		lblReferToBookXML = new Label(this, SWT.NONE);
 		lblReferToBookXML.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblReferToBookXML.setBounds(23, 31, 231, 15);
 		lblReferToBookXML.setText("Refer to xmlresources/books.xml for books");
+	}
+	@Override
+	protected void checkSubclass() {
+		// Disable the check that prevents subclassing of SWT components
 	}
 
 }

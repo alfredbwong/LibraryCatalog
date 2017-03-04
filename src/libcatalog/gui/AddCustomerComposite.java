@@ -27,7 +27,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-public class AddCustomerComposite extends Composite implements MainCompInterface{
+public class AddCustomerComposite extends Composite{
 	private Text textCustomerName;
 	private Text textAddress;
 	private Label lblAddNewCustomer;
@@ -44,39 +44,29 @@ public class AddCustomerComposite extends Composite implements MainCompInterface
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
-		setupWidgets();
-	}
-
-	@Override
-	protected void checkSubclass() {
-		// Disable the check that prevents subclassing of SWT components
-	}
-
-	@Override
-	public void setupWidgets() {
 		lblAddNewCustomer = new Label(this, SWT.NONE);
 		lblAddNewCustomer.setVisible(true);
 		lblAddNewCustomer.setBounds(53, 55, 130, 15);
 		lblAddNewCustomer.setText("Add a New Customer");
-		
+
 		lblCustomerName = new Label(this, SWT.NONE);
 		lblCustomerName.setVisible(true);
 		lblCustomerName.setBounds(10, 83, 95, 15);
 		lblCustomerName.setText("Customer Name:");
-		
+
 		textCustomerName = new Text(this, SWT.BORDER);
 		textCustomerName.setVisible(true);
 		textCustomerName.setBounds(111, 80, 153, 21);
-		
+
 		lblAddressLabel = new Label(this, SWT.NONE);
 		lblAddressLabel.setVisible(true);
 		lblAddressLabel.setBounds(10, 120, 95, 15);
 		lblAddressLabel.setText("Address:");
-		
+
 		textAddress = new Text(this, SWT.BORDER);
 		textAddress.setVisible(true);
 		textAddress.setBounds(111, 114, 153, 21);
-		
+
 		btnAddNewCustomer = new Button(this, SWT.NONE);
 		btnAddNewCustomer.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -96,7 +86,12 @@ public class AddCustomerComposite extends Composite implements MainCompInterface
 		});
 		btnAddNewCustomer.setVisible(true);
 		btnAddNewCustomer.setBounds(53, 157, 130, 25);
-		btnAddNewCustomer.setText("Add New Customer!");		
+		btnAddNewCustomer.setText("Add New Customer!");			
+	}
+
+	@Override
+	protected void checkSubclass() {
+		// Disable the check that prevents subclassing of SWT components
 	}
 
 	private void addBookToXML(){
@@ -110,32 +105,32 @@ public class AddCustomerComposite extends Composite implements MainCompInterface
 			document = documentBuilder.parse(new File("src\\xmlresources\\customer.xml"));
 			int newCustomerNumber = document.getElementsByTagName("customer").getLength();
 			Element root = document.getDocumentElement();
-			
-			
+
+
 			Element newCustomer = document.createElement("customer");
 			newCustomer.setAttribute("id",Integer.toString(newCustomerNumber+1));
-			
+
 			Element customerName = document.createElement("name");
 			customerName.appendChild(document.createTextNode(textCustomerName.getText()));
 			newCustomer.appendChild(customerName);
-			
+
 			Element customerAddr = document.createElement("address");
 			customerAddr.appendChild(document.createTextNode(textAddress.getText()));
 			newCustomer.appendChild(customerAddr);
-			
+
 			root.appendChild(newCustomer);
-			
+
 			DOMSource source = new DOMSource(document);
-	        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-	        Transformer transformer = transformerFactory.newTransformer();
-	        StreamResult result = new StreamResult("src\\xmlresources\\customer.xml");
-	        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-	        transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-	        transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-	        transformer.transform(source, result);
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			StreamResult result = new StreamResult("src\\xmlresources\\customer.xml");
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+			transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+			transformer.transform(source, result);
 		} catch (SAXException | IOException | ParserConfigurationException | TransformerException e) {
 			e.printStackTrace();
 		} 
-		
+
 	}
 }

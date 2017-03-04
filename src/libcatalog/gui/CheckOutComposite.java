@@ -25,7 +25,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
-public class CheckOutComposite extends Composite implements MainCompInterface {
+public class CheckOutComposite extends Composite {
 	private Text textCustomerInput;
 	private Text textBookInput;
 	private Label lblCheckOutBook;
@@ -45,17 +45,6 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
-		setupWidgets();		
-
-	}
-
-	@Override
-	protected void checkSubclass() {
-		// Disable the check that prevents subclassing of SWT components
-	}
-
-	@Override
-	public void setupWidgets() {
 		lblCheckOutBook = new Label(this, SWT.NONE);
 		lblCheckOutBook.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblCheckOutBook.setBounds(69, 10, 102, 15);
@@ -85,6 +74,11 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 		btnCheckOutBook.setBounds(47, 103, 128, 25);
 		btnCheckOutBook.setText("Check Out Book");
 
+	}
+
+	@Override
+	protected void checkSubclass() {
+		// Disable the check that prevents subclassing of SWT components
 	}
 
 	protected void writeCustomerToBook() {
