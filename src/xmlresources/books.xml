@@ -1,27 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><class>
-	<book isbn="1">
-		<title>book1</title>
-		<pages>109238</pages>
-		<availability>false</availability>
-		<bororwerID/>4</book>
-	<book isbn="2">
-		<title>book2</title>
-		<pages>89234</pages>
-		<availability>true</availability>
-		<bororwerID/>2</book>
-<book isbn="3">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><book isbn="1">
+	<title>book1</title>
+	<pages>109238</pages>
+	<availability>false</availability>
+	<borrowerID>2</borrowerID>
+<book isbn="2">
         <title>testBook</title>
-        <pages>1212</pages>
+        <pages>111</pages>
         <availability>true</availability>
-        <borrowerID/>3</book>
-<book isbn="4">
-        <title>BigGiant</title>
-        <pages>123</pages>
-        <availability>true</availability>
-        <borrowerID/>3</book>
-<book isbn="5">
-        <title>NewBookTest</title>
-        <pages>123123</pages>
-        <availability>true</availability>
-        <borrowerID/>4</book>
-</class>
+        <borrowerID>4</borrowerID>
+    </book>
+</book>

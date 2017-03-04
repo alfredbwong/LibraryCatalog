@@ -15,6 +15,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import libcatalog.entities.Book;
 
 import org.eclipse.swt.widgets.Label;
@@ -95,8 +97,17 @@ public class CheckOutComposite extends Composite implements MainCompInterface {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			document = documentBuilder.parse(new File(BOOK_XMLPATH));
 			Node bookToCheckOut = document.getElementsByTagName("book").item(Integer.parseInt(textBookInput.getText())-1);
-			Node borrowerAttr = bookToCheckOut.getChildNodes().item(REF_NUM_OF_BORROWER);
-			borrowerAttr.setNodeValue(textCustomerInput.getText());
+
+			NodeList list = bookToCheckOut.getChildNodes();
+
+			for (int i = 0; i < list.getLength(); i++) {
+				Node node = list.item(i);
+				// get the salary element, and update the value
+				if ("borrowerID".equals(node.getNodeName())) {
+					node.setTextContent(textCustomerInput.getText());
+				}
+
+			}
 			// Write to XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
