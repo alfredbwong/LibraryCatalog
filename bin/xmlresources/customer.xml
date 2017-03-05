@@ -20,4 +20,8 @@
         <name>Joker</name>
         <address>11Toobad</address>
     </customer>
+<customer id="7">
+        <name>newcust1</name>
+        <address>7fake street</address>
+    </customer>
 </class>

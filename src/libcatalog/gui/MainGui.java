@@ -68,7 +68,7 @@ public class MainGui {
 	protected void createContents() {
 		shell = new Shell();
 		shell.setSize(450, 300);
-		shell.setText("Main Gui");
+		shell.setText("Main Library Interface");
 		shell.setLayout(null);
 		
 				
