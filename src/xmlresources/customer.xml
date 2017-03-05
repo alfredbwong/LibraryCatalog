@@ -8,10 +8,6 @@
 		<name>Abby</name>
 		<address>3GoldStreet</address>
 	</customer>
-	<customer id="3">
-		<name>Baby</name>
-		<address>71Goodman</address>
-	</customer>
 	<customer id="4">
 		<name>Mom</name>
 		<address>11Mom Drive</address>
@@ -20,4 +16,8 @@
 		<name>B</name>
 		<address>34jeje</address>
 	</customer>
+<customer id="6">
+        <name>Joker</name>
+        <address>11Toobad</address>
+    </customer>
 </class>

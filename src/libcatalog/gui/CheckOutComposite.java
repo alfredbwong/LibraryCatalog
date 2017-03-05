@@ -89,7 +89,17 @@ public class CheckOutComposite extends Composite {
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			document = documentBuilder.parse(new File(BOOK_XMLPATH));
-			Node bookToCheckOut = document.getElementsByTagName("book").item(Integer.parseInt(textBookInput.getText())-1);
+			NodeList bookNodes = document.getElementsByTagName("book");
+			Node bookToCheckOut = null;
+			for (int j = 0; j < bookNodes.getLength(); j ++){
+				String isbnNumber = bookNodes.item(j).getAttributes().item(0).getNodeValue();
+				if (isbnNumber.equals(textBookInput.getText())){
+					bookToCheckOut = bookNodes.item(j);
+				}
+			}
+			if (bookToCheckOut == null){
+				return;
+			}
 
 			NodeList list = bookToCheckOut.getChildNodes();
 			boolean wasContentUpdated = false;
@@ -113,8 +123,8 @@ public class CheckOutComposite extends Composite {
 			transformer.transform(source, result);
 
 		}catch (Exception e) {
+			System.out.println("Failed to check out book.");
 			e.printStackTrace();
-			// TODO: handle exception
 		}
 
 	}

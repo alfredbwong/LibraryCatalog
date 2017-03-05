@@ -18,6 +18,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -106,7 +108,14 @@ public class AddBookComposite extends Composite {
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			document = documentBuilder.parse(new File("src\\xmlresources\\books.xml"));
-			int newIsbnNumber = document.getElementsByTagName("book").getLength();
+			
+			//Find next biggest isbn number
+			int newIsbnNumber = 0;
+			NodeList bookNodes = document.getElementsByTagName("book");
+			for (int j = 0; j < bookNodes.getLength(); j ++){
+				int iterBookIsbnNum =  Integer.parseInt(bookNodes.item(j).getAttributes().item(0).getNodeValue());
+				newIsbnNumber = iterBookIsbnNum > newIsbnNumber ? iterBookIsbnNum : newIsbnNumber;
+			}
 			Element root = document.getDocumentElement();
 
 

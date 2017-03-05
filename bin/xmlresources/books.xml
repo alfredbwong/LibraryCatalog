@@ -1,20 +1,33 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><library>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<library>
 	<book isbn="1">
 		<title>book1</title>
 		<pages>109238</pages>
-		<availability>false</availability>
-		<borrowerID>3</borrowerID>
+		<availability>true</availability>
+		<borrowerID/>
 	</book>
 	<book isbn="2">
 		<title>testBook</title>
 		<pages>111</pages>
-		<availability>false</availability>
-		<borrowerID>1</borrowerID>
-	</book>
-	<book isbn="3">
-		<title>book2</title>
-		<pages>111111</pages>
 		<availability>true</availability>
 		<borrowerID/>
 	</book>
+	<book isbn="4">
+		<title>book2</title>
+		<pages>111111</pages>
+		<availability>false</availability>
+		<borrowerID>1</borrowerID>
+	</book>
+<book isbn="5">
+        <title>book3</title>
+        <pages>333</pages>
+        <availability>true</availability>
+        <borrowerID/>
+    </book>
+<book isbn="6">
+        <title>book5</title>
+        <pages>234234</pages>
+        <availability>true</availability>
+        <borrowerID/>
+    </book>
 </library>

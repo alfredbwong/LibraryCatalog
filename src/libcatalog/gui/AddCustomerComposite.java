@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.MessageBox;
@@ -103,9 +104,16 @@ public class AddCustomerComposite extends Composite{
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			document = documentBuilder.parse(new File("src\\xmlresources\\customer.xml"));
-			int newCustomerNumber = document.getElementsByTagName("customer").getLength();
-			Element root = document.getDocumentElement();
 
+			//Find next biggest isbn number
+			int newCustomerNumber = 0;
+			NodeList custNodes = document.getElementsByTagName("customer");
+			for (int j = 0; j < custNodes.getLength(); j ++){
+				int iterCustNum =  Integer.parseInt(custNodes.item(j).getAttributes().item(0).getNodeValue());
+				newCustomerNumber = iterCustNum > newCustomerNumber ? iterCustNum : newCustomerNumber;
+			}
+			
+			Element root = document.getDocumentElement();
 
 			Element newCustomer = document.createElement("customer");
 			newCustomer.setAttribute("id",Integer.toString(newCustomerNumber+1));

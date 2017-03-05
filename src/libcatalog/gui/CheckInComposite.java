@@ -1,8 +1,6 @@
 package libcatalog.gui;
 
 import java.io.File;
-import java.util.LinkedList;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -16,8 +14,6 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-
-import libcatalog.entities.Book;
 
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -80,9 +76,19 @@ public class CheckInComposite extends Composite {
 		try {
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			document = documentBuilder.parse(new File(BOOK_XMLPATH));
-			Node bookToCheckOut = document.getElementsByTagName("book").item(Integer.parseInt(textBookInput.getText())-1);
+			NodeList bookNodes = document.getElementsByTagName("book");
+			Node bookToCheckIn = null;
+			for (int j = 0; j < bookNodes.getLength(); j ++){
+				String isbnNumber = bookNodes.item(j).getAttributes().item(0).getNodeValue();
+				if (isbnNumber.equals(textBookInput.getText())){
+					bookToCheckIn = bookNodes.item(j);
+				}
+			}
+			if (bookToCheckIn == null){
+				return;
+			}
 
-			NodeList list = bookToCheckOut.getChildNodes();
+			NodeList list = bookToCheckIn.getChildNodes();
 			for (int i = 0; i < list.getLength(); i++) {
 				Node node = list.item(i);
 //				System.out.println(i + " : " + node.getNodeName());
@@ -102,8 +108,8 @@ public class CheckInComposite extends Composite {
 			transformer.transform(source, result);
 
 		}catch (Exception e) {
+			System.out.println("Failed to check in book.");
 			e.printStackTrace();
-			// TODO: handle exception
 		}
 
 	}
