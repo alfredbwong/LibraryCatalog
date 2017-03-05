@@ -46,27 +46,30 @@ public class AddCustomerComposite extends Composite{
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
 		lblAddNewCustomer = new Label(this, SWT.NONE);
+		lblAddNewCustomer.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblAddNewCustomer.setVisible(true);
-		lblAddNewCustomer.setBounds(53, 55, 130, 15);
+		lblAddNewCustomer.setBounds(81, 10, 130, 15);
 		lblAddNewCustomer.setText("Add a New Customer");
 
 		lblCustomerName = new Label(this, SWT.NONE);
+		lblCustomerName.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblCustomerName.setVisible(true);
-		lblCustomerName.setBounds(10, 83, 95, 15);
+		lblCustomerName.setBounds(10, 58, 95, 15);
 		lblCustomerName.setText("Customer Name:");
 
 		textCustomerName = new Text(this, SWT.BORDER);
 		textCustomerName.setVisible(true);
-		textCustomerName.setBounds(111, 80, 153, 21);
+		textCustomerName.setBounds(121, 55, 139, 21);
 
 		lblAddressLabel = new Label(this, SWT.NONE);
+		lblAddressLabel.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblAddressLabel.setVisible(true);
-		lblAddressLabel.setBounds(10, 120, 95, 15);
+		lblAddressLabel.setBounds(10, 91, 95, 15);
 		lblAddressLabel.setText("Address:");
 
 		textAddress = new Text(this, SWT.BORDER);
 		textAddress.setVisible(true);
-		textAddress.setBounds(111, 114, 153, 21);
+		textAddress.setBounds(121, 88, 139, 21);
 
 		btnAddNewCustomer = new Button(this, SWT.NONE);
 		btnAddNewCustomer.addSelectionListener(new SelectionAdapter() {
@@ -86,7 +89,7 @@ public class AddCustomerComposite extends Composite{
 			}
 		});
 		btnAddNewCustomer.setVisible(true);
-		btnAddNewCustomer.setBounds(53, 157, 130, 25);
+		btnAddNewCustomer.setBounds(69, 132, 130, 25);
 		btnAddNewCustomer.setText("Add New Customer!");			
 	}
 

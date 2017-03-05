@@ -18,7 +18,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.eclipse.swt.widgets.Label;
@@ -48,50 +47,56 @@ public class AddBookComposite extends Composite {
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
-		lblBookTitle = new Label(this, SWT.NONE);
-		lblBookTitle.setBounds(26, 57, 55, 15);
-		lblBookTitle.setText("Book Title:");
-
-		lblAvailability = new Label(this, SWT.NONE);
-		lblAvailability.setBounds(26, 130, 74, 15);
-		lblAvailability.setText("Availability:");
-
-		txtBookTitle = new Text(this, SWT.BORDER);
-		txtBookTitle.setText("Book Title");
-		txtBookTitle.setBounds(111, 51, 128, 21);
-
-		lblAddANew = new Label(this, SWT.NONE);
-		lblAddANew.setBounds(87, 30, 95, 15);
-		lblAddANew.setText("Add a New Book");
-
-		btnAddBook = new Button(this, SWT.NONE);
-		btnAddBook.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (txtBookTitle.getText().isEmpty() || textPageCount.getText().isEmpty()){
-					MessageBox alertMsgBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_ERROR);
-					alertMsgBox.setMessage("Cannot have empty fields");
-					alertMsgBox.open();
-				}else{
-					addBookToXML();
-					MessageBox alertMsgBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_WORKING);
-					alertMsgBox.setMessage("Successfully added new book");
-					alertMsgBox.open();
-				}
-			}
-		});
-		btnAddBook.setBounds(87, 163, 75, 25);
-		btnAddBook.setText("Add Book!");
-
-		buttonAvail = new Button(this, SWT.CHECK);
-		buttonAvail.setBounds(111, 129, 93, 16);
-
-		lblPageCount = new Label(this, SWT.NONE);
-		lblPageCount.setBounds(26, 92, 79, 15);
-		lblPageCount.setText("Page Count:");
-
-		textPageCount = new Text(this, SWT.BORDER);
-		textPageCount.setBounds(111, 89, 128, 21);		
+				setLayout(null);
+		
+				lblAddANew = new Label(this, SWT.NONE);
+				lblAddANew.setBounds(84, 10, 88, 15);
+				lblAddANew.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+				lblAddANew.setText("Add a New Book");
+												lblBookTitle = new Label(this, SWT.NONE);
+												lblBookTitle.setBounds(23, 48, 64, 15);
+												lblBookTitle.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+												lblBookTitle.setText("Book Title:");
+												
+														txtBookTitle = new Text(this, SWT.BORDER);
+														txtBookTitle.setBounds(117, 45, 136, 21);
+								
+										lblPageCount = new Label(this, SWT.NONE);
+										lblPageCount.setBounds(23, 74, 70, 15);
+										lblPageCount.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+										lblPageCount.setText("Page Count:");
+								
+										textPageCount = new Text(this, SWT.BORDER);
+										textPageCount.setBounds(117, 71, 136, 21);
+				
+						lblAvailability = new Label(this, SWT.NONE);
+						lblAvailability.setBounds(23, 97, 70, 15);
+						lblAvailability.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+						lblAvailability.setText("Availability:");
+				
+						buttonAvail = new Button(this, SWT.CHECK);
+						buttonAvail.setBounds(180, 98, 13, 16);
+						buttonAvail.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+						buttonAvail.setSelection(true);
+		
+				btnAddBook = new Button(this, SWT.NONE);
+				btnAddBook.setBounds(52, 131, 170, 25);
+				btnAddBook.addSelectionListener(new SelectionAdapter() {
+					@Override
+					public void widgetSelected(SelectionEvent e) {
+						if (txtBookTitle.getText().isEmpty() || textPageCount.getText().isEmpty()){
+							MessageBox alertMsgBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_ERROR);
+							alertMsgBox.setMessage("Cannot have empty fields");
+							alertMsgBox.open();
+						}else{
+							addBookToXML();
+							MessageBox alertMsgBox = new MessageBox(new Shell(), SWT.OK | SWT.ICON_WORKING);
+							alertMsgBox.setMessage("Successfully added new book");
+							alertMsgBox.open();
+						}
+					}
+				});
+				btnAddBook.setText("Add Book!");
 	}
 
 	@Override

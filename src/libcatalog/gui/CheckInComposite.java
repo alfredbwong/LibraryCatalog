@@ -39,26 +39,30 @@ public class CheckInComposite extends Composite {
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
+		setLayout(null);
 		lblCheckInBook = new Label(this, SWT.NONE);
+		lblCheckInBook.setBounds(54, 10, 171, 25);
+		lblCheckInBook.setAlignment(SWT.CENTER);
 		lblCheckInBook.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblCheckInBook.setBounds(69, 10, 102, 15);
-		lblCheckInBook.setText("Check In a Book");
+		lblCheckInBook.setText("Check In A Book Form");
 
 		lblBookId = new Label(this, SWT.NONE);
-		lblBookId.setBounds(10, 47, 55, 15);
+		lblBookId.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+		lblBookId.setBounds(28, 54, 73, 23);
+		lblBookId.setAlignment(SWT.CENTER);
 		lblBookId.setText("Book ID:");
 
 		textBookInput = new Text(this, SWT.BORDER);
-		textBookInput.setBounds(111, 44, 117, 21);
+		textBookInput.setBounds(107, 51, 119, 21);
 
 		btnCheckInBook = new Button(this, SWT.NONE);
+		btnCheckInBook.setBounds(54, 95, 171, 25);
 		btnCheckInBook.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				checkInBook();				
 			}
 		});
-		btnCheckInBook.setBounds(43, 92, 128, 25);
 		btnCheckInBook.setText("Check In Book");
 
 	}

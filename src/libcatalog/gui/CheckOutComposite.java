@@ -45,33 +45,37 @@ public class CheckOutComposite extends Composite {
 		super(parent, style);
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
+		setLayout(null);
 		lblCheckOutBook = new Label(this, SWT.NONE);
+		lblCheckOutBook.setBounds(64, 10, 150, 15);
+		lblCheckOutBook.setAlignment(SWT.CENTER);
 		lblCheckOutBook.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-		lblCheckOutBook.setBounds(69, 10, 102, 15);
-		lblCheckOutBook.setText("Check Out a Book");
+		lblCheckOutBook.setText("Check Out a Book Form");
 
 		lblCustomerId = new Label(this, SWT.NONE);
-		lblCustomerId.setBounds(10, 34, 82, 15);
+		lblCustomerId.setBounds(25, 55, 75, 15);
+		lblCustomerId.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblCustomerId.setText("Customer ID:");
 
 		textCustomerInput = new Text(this, SWT.BORDER);
-		textCustomerInput.setBounds(107, 31, 117, 21);
+		textCustomerInput.setBounds(105, 52, 142, 21);
 
 		lblBookId = new Label(this, SWT.NONE);
-		lblBookId.setBounds(10, 69, 55, 15);
+		lblBookId.setBounds(25, 84, 75, 15);
+		lblBookId.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblBookId.setText("Book ID:");
 
 		textBookInput = new Text(this, SWT.BORDER);
-		textBookInput.setBounds(107, 63, 117, 21);
+		textBookInput.setBounds(105, 81, 142, 21);
 
 		btnCheckOutBook = new Button(this, SWT.NONE);
+		btnCheckOutBook.setBounds(64, 123, 150, 25);
 		btnCheckOutBook.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				writeCustomerToBook();				
 			}
 		});
-		btnCheckOutBook.setBounds(47, 103, 128, 25);
 		btnCheckOutBook.setText("Check Out Book");
 
 	}
