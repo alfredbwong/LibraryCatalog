@@ -19,8 +19,6 @@ public class CheckAvailComposite extends Composite {
 	private Label lblSearchResult;
 	private Button btnFindBook;
 	private Label lblReferToBookXML;
-	private LinkedList<Book> listOfBooks;
-
 	/**
 	 * Create the composite.
 	 * @param parent
@@ -28,7 +26,6 @@ public class CheckAvailComposite extends Composite {
 	 */
 	public CheckAvailComposite(Composite parent, int style, LinkedList<Book> listOfBooks) {
 		super(parent, style);
-		this.listOfBooks = listOfBooks;
 		this.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		this.setBounds(148, 5, 276, 251);
 		//Check Book Availability Widgets
@@ -77,10 +74,12 @@ public class CheckAvailComposite extends Composite {
 		lblReferToBookXML.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		lblReferToBookXML.setBounds(23, 31, 231, 15);
 		lblReferToBookXML.setText("Refer to xmlresources/books.xml for books");
+
 	}
 	@Override
 	protected void checkSubclass() {
 		// Disable the check that prevents subclassing of SWT components
 	}
+
 
 }

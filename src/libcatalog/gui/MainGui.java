@@ -21,6 +21,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.widgets.Label;
 
 public class MainGui {
 
@@ -29,6 +32,7 @@ public class MainGui {
 	protected AddBookComposite addBookComp;
 	protected AddCustomerComposite addCustComp;
 	protected CheckOutComposite checkOutComp;
+	protected CheckInComposite checkInComp;
 	protected LinkedList <Book> bookList;
 
 	/**
@@ -73,7 +77,7 @@ public class MainGui {
 				
 		// Main buttons
 		Button btnCheckOutBook = new Button(shell, SWT.NONE);
-		btnCheckOutBook.setBounds(5, 5, 134, 46);
+		btnCheckOutBook.setBounds(5, 5, 134, 37);
 		btnCheckOutBook.setText("Check Out Book");
 		btnCheckOutBook.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -87,11 +91,37 @@ public class MainGui {
 				if (addCustComp != null){
 					addCustComp.dispose();
 				}
+				if (checkInComp != null){
+					checkInComp.dispose();
+				}
 				checkOutComp = new CheckOutComposite(shell, SWT.NONE, bookList);
 			}
 		});
 		
+		Button btnCheckIn = new Button(shell, SWT.NONE);
+		btnCheckIn.setBounds(5, 47, 134, 37);
+		btnCheckIn.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (addBookComp != null){
+					addBookComp.dispose();
+				}
+				if (addCustComp != null){
+					addCustComp.dispose();
+				}
+				if (checkOutComp != null){
+					checkOutComp.dispose();
+				}
+				if (checkAvailComp != null){
+					checkAvailComp.dispose();
+				}
+				checkInComp = new CheckInComposite(shell, SWT.NONE);
+			}
+		});
+		btnCheckIn.setText("Check In Book");
+		
 		Button btnAddNewCustomer = new Button(shell, SWT.NONE);
+		btnAddNewCustomer.setBounds(5, 130, 134, 37);
 		btnAddNewCustomer.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -104,37 +134,16 @@ public class MainGui {
 				if (checkOutComp != null){
 					checkOutComp.dispose();
 				}
+				if (checkInComp != null){
+					checkInComp.dispose();
+				}
 				addCustComp = new AddCustomerComposite(shell, SWT.NONE);
 			}
 		});
-		btnAddNewCustomer.setBounds(5, 56, 134, 46);
 		btnAddNewCustomer.setText("Add New Customer");
 		
-		Button btnAddNewBook = new Button(shell, SWT.NONE);
-		btnAddNewBook.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				if (checkAvailComp != null){
-					checkAvailComp.dispose();
-				}
-				if (addCustComp != null){
-					addCustComp.dispose();
-				}
-				if (checkOutComp != null){
-					checkOutComp.dispose();
-				}
-				addBookComp = new AddBookComposite(shell, SWT.NONE);
-			}
-		});
-		btnAddNewBook.setBounds(5, 107, 134, 46);
-		btnAddNewBook.setText("Add New Book");
-		
-		Button btnReturnToLogin = new Button(shell, SWT.NONE);
-		btnReturnToLogin.setBounds(5, 212, 134, 46);
-		btnReturnToLogin.setText("Return to Login Page");
-		
 		Button btnCheckAvail = new Button(shell, SWT.NONE);
-		btnCheckAvail.setBounds(5, 159, 134, 47);
+		btnCheckAvail.setBounds(5, 90, 134, 37);
 		btnCheckAvail.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -147,13 +156,39 @@ public class MainGui {
 				if (checkOutComp != null){
 					checkOutComp.dispose();
 				}
+				if (checkInComp != null){
+					checkInComp.dispose();
+				}
 				checkAvailComp = new CheckAvailComposite(shell, SWT.NONE, bookList);
 			}
 		});
 		btnCheckAvail.setText("Check book availability");
 		
+		Button btnAddNewBook = new Button(shell, SWT.NONE);
+		btnAddNewBook.setBounds(5, 173, 134, 37);
+		btnAddNewBook.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (checkAvailComp != null){
+					checkAvailComp.dispose();
+				}
+				if (addCustComp != null){
+					addCustComp.dispose();
+				}
+				if (checkOutComp != null){
+					checkOutComp.dispose();
+				}
+				if (checkInComp != null){
+					checkInComp.dispose();
+				}
+				addBookComp = new AddBookComposite(shell, SWT.NONE);
+			}
+		});
+		btnAddNewBook.setText("Add New Book");
 		
-		
+		Button btnReturnToLogin = new Button(shell, SWT.NONE);
+		btnReturnToLogin.setBounds(5, 215, 134, 41);
+		btnReturnToLogin.setText("Return to Login Page");
 		
 		btnReturnToLogin.addListener(SWT.Selection, new Listener(){
             public void handleEvent(Event event) {
