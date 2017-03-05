@@ -105,7 +105,7 @@ public class AddCustomerComposite extends Composite{
 			documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			document = documentBuilder.parse(new File("src\\xmlresources\\customer.xml"));
 
-			//Find next biggest isbn number
+			//Find next biggest customer id number
 			int newCustomerNumber = 0;
 			NodeList custNodes = document.getElementsByTagName("customer");
 			for (int j = 0; j < custNodes.getLength(); j ++){

@@ -105,7 +105,6 @@ public class CheckOutComposite extends Composite {
 			boolean wasContentUpdated = false;
 			for (int i = 0; i < list.getLength(); i++) {
 				Node node = list.item(i);
-//				System.out.println(i + " : " + node.getNodeName());
 				if ("availability".equals(node.getNodeName()) && node.getTextContent().equals("true")) {
 					node.setTextContent("false");
 					wasContentUpdated = true;
@@ -114,7 +113,6 @@ public class CheckOutComposite extends Composite {
 					node.setTextContent(textCustomerInput.getText());
 				}
 			}
-//			System.out.println("wasContentUpdated: " + wasContentUpdated);
 //			// Write to XML file
 			TransformerFactory transformerFactory = TransformerFactory.newInstance();
 			Transformer transformer = transformerFactory.newTransformer();
