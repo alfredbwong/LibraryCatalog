@@ -91,6 +91,9 @@ public class MainGui {
 				if (checkInComp != null){
 					checkInComp.dispose();
 				}
+				if (checkOutComp != null){
+					checkOutComp.dispose();
+				}
 				checkOutComp = new CheckOutComposite(shell, SWT.NONE, bookList);
 			}
 		});
@@ -111,6 +114,9 @@ public class MainGui {
 				}
 				if (checkAvailComp != null){
 					checkAvailComp.dispose();
+				}
+				if (checkInComp != null){
+					checkInComp.dispose();
 				}
 				checkInComp = new CheckInComposite(shell, SWT.NONE);
 			}
@@ -134,6 +140,9 @@ public class MainGui {
 				if (checkInComp != null){
 					checkInComp.dispose();
 				}
+				if (addCustComp != null){
+					addCustComp.dispose();
+				}
 				addCustComp = new AddCustomerComposite(shell, SWT.NONE);
 			}
 		});
@@ -156,6 +165,9 @@ public class MainGui {
 				if (checkInComp != null){
 					checkInComp.dispose();
 				}
+				if (checkAvailComp != null){
+					checkAvailComp.dispose();
+				}
 				checkAvailComp = new CheckAvailComposite(shell, SWT.NONE, bookList);
 			}
 		});
@@ -177,6 +189,9 @@ public class MainGui {
 				}
 				if (checkInComp != null){
 					checkInComp.dispose();
+				}
+				if (addBookComp != null){
+					addBookComp.dispose();
 				}
 				addBookComp = new AddBookComposite(shell, SWT.NONE);
 			}

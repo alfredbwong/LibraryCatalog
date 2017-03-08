@@ -1,11 +1,14 @@
 package libcatalog.gui;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
@@ -16,6 +19,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import libcatalog.entities.Book;
 
@@ -124,10 +128,9 @@ public class CheckOutComposite extends Composite {
 			StreamResult result = new StreamResult(new File(BOOK_XMLPATH));
 			transformer.transform(source, result);
 
-		}catch (Exception e) {
+		}catch (NullPointerException | TransformerException | SAXException | IOException | ParserConfigurationException e) {
 			System.out.println("Failed to check out book.");
 			e.printStackTrace();
 		}
-
 	}
 }

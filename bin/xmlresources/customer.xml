@@ -16,12 +16,12 @@
 		<name>B</name>
 		<address>34jeje</address>
 	</customer>
-<customer id="6">
-        <name>Joker</name>
-        <address>11Toobad</address>
-    </customer>
-<customer id="7">
-        <name>newcust1</name>
-        <address>7fake street</address>
-    </customer>
+	<customer id="6">
+		<name>Joker</name>
+		<address>11Toobad</address>
+	</customer>
+	<customer id="7">
+		<name>newcust1</name>
+		<address>7fake street</address>
+	</customer>
 </class>
